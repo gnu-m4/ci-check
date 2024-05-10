@@ -40,7 +40,7 @@ on:
 
 # Variables.
 env:
-  package: xxxxxxxx
+  package: m4
 
 jobs:
   build-tarball:
