@@ -1,0 +1,60 @@
+From 7f5cabf73de36c8d9a8eb60040db116f3fd1dcb5 Mon Sep 17 00:00:00 2001
+From: Bruno Haible <bruno@clisp.org>
+Date: Sat, 2 Dec 2023 06:38:14 +0100
+Subject: [PATCH] Fix two occurrences of undefined behaviour.
+
+* src/path.c (include_env_init): When path_end becomes NULL, terminate
+the loop without computing path_end + 1.
+* src/macro.c (expand_macro): Pass a signed negative value to
+obstack_blank_fast. This avoids a pointer overflow.
+---
+ src/macro.c | 2 +-
+ src/path.c  | 8 ++++----
+ 2 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/src/macro.c b/src/macro.c
+index 6052cec4..15167d68 100644
+--- a/src/macro.c
++++ b/src/macro.c
+@@ -385,5 +385,5 @@ expand_macro (symbol *sym)
+     obstack_free (&argc_stack, argv[0]);
+   else
+     obstack_free (&arguments, NULL);
+-  obstack_blank_fast (&argv_stack, -argc * sizeof (token_data *));
++  obstack_blank_fast (&argv_stack, - argc * (ptrdiff_t) sizeof (token_data *));
+ }
+diff --git a/src/path.c b/src/path.c
+index bba197cd..09ecf5e9 100644
+--- a/src/path.c
++++ b/src/path.c
+@@ -50,7 +50,6 @@ void
+ include_env_init (void)
+ {
+   char *path;
+-  char *path_end;
+   char *env_path;
+ 
+   if (no_gnu_extensions)
+@@ -63,15 +62,16 @@ include_env_init (void)
+   env_path = xstrdup (env_path);
+   path = env_path;
+ 
+-  do
++  for (;;)
+     {
+-      path_end = strchr (path, ':');
++      char *path_end = strchr (path, ':');
+       if (path_end)
+         *path_end = '\0';
+       add_include_directory (path);
++      if (!path_end)
++        break;
+       path = path_end + 1;
+     }
+-  while (path_end);
+   free (env_path);
+ }
+ 
+-- 
+2.34.1
+
