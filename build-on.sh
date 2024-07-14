@@ -48,7 +48,7 @@ cd ..
 
 if test -n "$install_optional_dependencies_command"; then
   # Install the optional dependencies.
-  $install_optional_dependencies_command
+  sh -c "$install_optional_dependencies_command"
 
   # Build again, this time with optional packages installed.
   mkdir build-full
