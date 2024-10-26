@@ -1,0 +1,44 @@
+From 2af3fe97a94d5de887a42bd16f61f1ed2247f04a Mon Sep 17 00:00:00 2001
+From: Bruno Haible <bruno@clisp.org>
+Date: Thu, 24 Oct 2024 18:45:33 +0200
+Subject: [PATCH] Update after gnulib changed.
+
+* src/builtin.c (m4_syscmd): Update execute invocation.
+(m4_esyscmd): Update create_pipe_in invocation.
+---
+ src/builtin.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/builtin.c b/src/builtin.c
+index 38019f10..98b6b8c6 100644
+--- a/src/builtin.c
++++ b/src/builtin.c
+@@ -1,6 +1,6 @@
+ /* GNU m4 -- A simple macro processor
+ 
+-   Copyright (C) 1989-1994, 2000, 2004, 2006-2014, 2016-2017, 2020-2023
++   Copyright (C) 1989-1994, 2000, 2004, 2006-2014, 2016-2017, 2020-2024
+    Free Software Foundation, Inc.
+ 
+    This file is part of GNU M4.
+@@ -977,7 +977,7 @@ m4_syscmd (struct obstack *obs MAYBE_UNUSED, int argc, token_data **argv)
+     }
+   prog_args[3] = NULL;
+   errno = 0;
+-  status = execute (ARG (0), SYSCMD_SHELL, prog_args, NULL, false,
++  status = execute (ARG (0), SYSCMD_SHELL, prog_args, NULL, NULL, false,
+                     false, false, false, true, false, &sig_status);
+   if (sig_status)
+     {
+@@ -1033,7 +1033,7 @@ m4_esyscmd (struct obstack *obs, int argc, token_data **argv)
+     }
+   prog_args[3] = NULL;
+   errno = 0;
+-  child = create_pipe_in (ARG (0), SYSCMD_SHELL, prog_args, NULL,
++  child = create_pipe_in (ARG (0), SYSCMD_SHELL, prog_args, NULL, NULL,
+                           NULL, false, true, false, &fd);
+   if (child == -1)
+     {
+-- 
+2.34.1
+
