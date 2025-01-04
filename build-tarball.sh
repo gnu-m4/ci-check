@@ -31,7 +31,6 @@ git clone --depth 1 https://git.savannah.gnu.org/git/gnulib.git
 (cd "$package" && patch -p1 < ../patches/0001-syscmd-Make-it-work-again-for-most-commands-on-FreeB.patch)
 (cd "$package" && patch -p1 < ../patches/0001-Fix-two-occurrences-of-undefined-behaviour.patch)
 (cd "$package" && patch -p1 < ../patches/0001-maint-Avoid-a-gcc-13-warning-that-makes-enable-gcc-w.patch)
-(cd "$package" && patch -p1 < ../patches/0001-Update-after-gnulib-changed.patch)
 
 export GNULIB_SRCDIR=`pwd`/gnulib
 cd "$package"
