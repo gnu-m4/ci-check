@@ -1,15 +1,24 @@
-diff --git a/bootstrap.conf b/bootstrap.conf
-index 4259ddf5..67153c34 100644
---- a/bootstrap.conf
-+++ b/bootstrap.conf
-@@ -44,6 +44,10 @@ checkout_only_file=HACKING
- # Additional gnulib-tool options to use.
- gnulib_tool_options=$gnulib_tool_options'
- 	--no-libtool
-+	--avoid=array-oset-tests
-+	--avoid=avltree-oset-tests
-+	--avoid=memchr-tests
-+	--avoid=memset_explicit-tests
- '
- 
- # gnulib_modules must remain empty in order to get --update style
+diff --git a/m4/gnulib-cache.m4 b/m4/gnulib-cache.m4
+index acebc83f..7226ef86 100644
+--- a/m4/gnulib-cache.m4
++++ b/m4/gnulib-cache.m4
+@@ -44,6 +44,10 @@
+ #  --avoid=getopt-posix-tests \
+ #  --avoid=lock-tests \
+ #  --avoid=tls-tests \
++#  --avoid=array-oset-tests \
++#  --avoid=avltree-oset-tests \
++#  --avoid=memchr-tests \
++#  --avoid=memset_explicit-tests \
+ #  announce-gen \
+ #  assert \
+ #  attribute \
+@@ -180,7 +184,7 @@ gl_MODULES([
+   xvasprintf-posix
+ ])
+ gl_WITH_CXX_TESTS
+-gl_AVOID([getopt-posix-tests lock-tests tls-tests])
++gl_AVOID([getopt-posix-tests lock-tests tls-tests array-oset-tests avltree-oset-tests memchr-tests memset_explicit-tests])
+ gl_SOURCE_BASE([lib])
+ gl_M4_BASE([m4])
+ gl_PO_BASE([])
