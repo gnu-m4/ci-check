@@ -1,0 +1,15 @@
+diff --git a/bootstrap.conf b/bootstrap.conf
+index 4259ddf5..67153c34 100644
+--- a/bootstrap.conf
++++ b/bootstrap.conf
+@@ -44,6 +44,10 @@ checkout_only_file=HACKING
+ # Additional gnulib-tool options to use.
+ gnulib_tool_options=$gnulib_tool_options'
+ 	--no-libtool
++	--avoid=array-oset-tests
++	--avoid=avltree-oset-tests
++	--avoid=memchr-tests
++	--avoid=memset_explicit-tests
+ '
+ 
+ # gnulib_modules must remain empty in order to get --update style
