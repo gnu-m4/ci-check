@@ -25,7 +25,7 @@ set -e
 
 # Fetch sources (uses package 'git').
 git clone --depth 1 --branch branch-1.4 https://git.savannah.gnu.org/git/"$package".git
-git clone --depth 1 https://git.savannah.gnu.org/git/gnulib.git
+git clone --depth 1 "${gnulib_url}"
 
 # Apply patches.
 (cd "$package" && patch -p1 < ../patches/0001-maint-Avoid-a-gcc-13-warning-that-makes-enable-gcc-w.patch)
