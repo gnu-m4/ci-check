@@ -844,6 +844,8 @@ jobs:
   check-sanitized:
     name: make check with sanitizers
     needs: build-tarball
+    # Disabled because stackovf.test fails with sanitizers.
+    if: ${{ false }}
     runs-on: ubuntu-24.04
     steps:
       # This is needed because we run a script stored in this repository.
