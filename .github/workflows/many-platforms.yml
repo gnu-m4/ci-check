@@ -74,7 +74,7 @@ jobs:
             ${{ env.package }}/config.status
             ${{ env.package }}/log[1234]
             ${{ env.package }}/tests/test-suite.log
-          retention-days: 7
+          retention-days: 28
           overwrite: true
       # Doc: https://docs.github.com/en/actions/using-workflows/storing-workflow-data-as-artifacts
       #      https://github.com/actions/upload-artifact?tab=readme-ov-file#usage
@@ -83,7 +83,7 @@ jobs:
           name: tarball
           path: ${{ env.package }}/${{ env.package }}-*.tar.gz
           if-no-files-found: error
-          retention-days: 7
+          retention-days: 28
           compression-level: 0
           overwrite: true
   # We can run max. 20 "make check" jobs in parallel, max. 5 of them being on macOS.
@@ -128,7 +128,7 @@ jobs:
             ${{ env.package }}-*/build-full/config.status
             ${{ env.package }}-*/build-full/log[123]
             ${{ env.package }}-*/build-full/tests/test-suite.log
-          retention-days: 7
+          retention-days: 28
           overwrite: true
   check-linux-gnu-centos:
     name: make check on CentOS GNU/Linux
@@ -177,7 +177,7 @@ jobs:
             ${{ env.package }}-*/build-full/config.status
             ${{ env.package }}-*/build-full/log[123]
             ${{ env.package }}-*/build-full/tests/test-suite.log
-          retention-days: 7
+          retention-days: 28
           overwrite: true
   check-linux-gnu-alma:
     name: make check on AlmaLinux GNU/Linux
@@ -228,7 +228,7 @@ jobs:
             ${{ env.package }}-*/build-full/config.status
             ${{ env.package }}-*/build-full/log[123]
             ${{ env.package }}-*/build-full/tests/test-suite.log
-          retention-days: 7
+          retention-days: 28
           overwrite: true
   check-linux-alpine:
     name: make check on Alpine Linux
@@ -275,7 +275,7 @@ jobs:
             ${{ env.package }}-*/build-full/config.status
             ${{ env.package }}-*/build-full/log[123]
             ${{ env.package }}-*/build-full/tests/test-suite.log
-          retention-days: 7
+          retention-days: 28
           overwrite: true
   check-macos:
     name: make check on macOS
@@ -322,7 +322,7 @@ jobs:
             ${{ env.package }}-*/build-full/config.status
             ${{ env.package }}-*/build-full/log[123]
             ${{ env.package }}-*/build-full/tests/test-suite.log
-          retention-days: 7
+          retention-days: 28
           overwrite: true
   check-freebsd:
     name: make check on FreeBSD
@@ -374,7 +374,7 @@ jobs:
             ${{ env.package }}-*/build-full/config.status
             ${{ env.package }}-*/build-full/log[123]
             ${{ env.package }}-*/build-full/tests/test-suite.log
-          retention-days: 7
+          retention-days: 28
           overwrite: true
   check-netbsd:
     name: make check on NetBSD
@@ -427,7 +427,7 @@ jobs:
             ${{ env.package }}-*/build-full/config.status
             ${{ env.package }}-*/build-full/log[123]
             ${{ env.package }}-*/build-full/tests/test-suite.log
-          retention-days: 7
+          retention-days: 28
           overwrite: true
   check-openbsd:
     name: make check on OpenBSD
@@ -482,7 +482,7 @@ jobs:
             ${{ env.package }}-*/build-full/config.status
             ${{ env.package }}-*/build-full/log[123]
             ${{ env.package }}-*/build-full/tests/test-suite.log
-          retention-days: 7
+          retention-days: 28
           overwrite: true
   check-solaris11:
     name: make check on Solaris 11
@@ -539,7 +539,7 @@ jobs:
             ${{ env.package }}-*/build-full/config.status
             ${{ env.package }}-*/build-full/log[123]
             ${{ env.package }}-*/build-full/tests/test-suite.log
-          retention-days: 7
+          retention-days: 28
           overwrite: true
   check-solaris11-omnios:
     name: make check on Solaris 11 OmniOS
@@ -590,7 +590,7 @@ jobs:
             ${{ env.package }}-*/build-full/config.status
             ${{ env.package }}-*/build-full/log[123]
             ${{ env.package }}-*/build-full/tests/test-suite.log
-          retention-days: 7
+          retention-days: 28
           overwrite: true
   check-cygwin:
     name: make check on Cygwin
@@ -657,7 +657,7 @@ jobs:
             ${{ env.package }}-*/build-full/config.status
             ${{ env.package }}-*/build-full/log[123]
             ${{ env.package }}-*/build-full/tests/test-suite.log
-          retention-days: 7
+          retention-days: 28
           overwrite: true
   check-mingw:
     name: make check on mingw
@@ -730,7 +730,7 @@ jobs:
             ${{ env.package }}-*/build-full/config.status
             ${{ env.package }}-*/build-full/log[123]
             ${{ env.package }}-*/build-full/tests/test-suite.log
-          retention-days: 7
+          retention-days: 28
           overwrite: true
   check-msvc:
     name: make check on MSVC
@@ -838,7 +838,7 @@ jobs:
             ${{ env.package }}-*/build-full/config.status
             ${{ env.package }}-*/build-full/log[123]
             ${{ env.package }}-*/build-full/tests/test-suite.log
-          retention-days: 7
+          retention-days: 28
           overwrite: true
   # This is not a platform-specific test, but very useful for finding bugs.
   check-sanitized:
@@ -888,7 +888,7 @@ jobs:
             ${{ env.package }}-*/build-full/config.status
             ${{ env.package }}-*/build-full/log[123]
             ${{ env.package }}-*/build-full/tests/test-suite.log
-          retention-days: 7
+          retention-days: 28
           overwrite: true
   # This is not a platform-specific test, but very useful for finding ISO C23 compliance bugs.
   check-newest-clang:
@@ -940,7 +940,7 @@ jobs:
             ${{ env.package }}-*/build-full/config.status
             ${{ env.package }}-*/build-full/log[123]
             ${{ env.package }}-*/build-full/tests/test-suite.log
-          retention-days: 7
+          retention-days: 28
           overwrite: true
   # This is not a platform-specific test, but very useful for finding cross-compilation bugs.
   check-cross:
@@ -979,5 +979,5 @@ jobs:
             ${{ env.package }}-*/build/config.log
             ${{ env.package }}-*/build/config.status
             ${{ env.package }}-*/build/log[12]
-          retention-days: 7
+          retention-days: 28
           overwrite: true
