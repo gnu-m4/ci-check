@@ -30,6 +30,7 @@ git clone --depth 1 "${gnulib_url}"
 # Apply patches.
 (cd "$package" && patch -p1 < ../patches/0001-maint-Avoid-a-gcc-13-warning-that-makes-enable-gcc-w.patch)
 (cd "$package" && patch -p1 < ../patches/ubsan.diff)
+(cd "$package" && patch -p1 < ../patches/0001-build-Update-after-gnulib-changed.patch)
 
 export GNULIB_SRCDIR=`pwd`/gnulib
 cd "$package"

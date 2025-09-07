@@ -1,0 +1,25 @@
+From fc620141d8d8d062ac7bcf297f6a3911e8f665c1 Mon Sep 17 00:00:00 2001
+From: Bruno Haible <bruno@clisp.org>
+Date: Thu, 4 Sep 2025 01:02:38 +0200
+Subject: [PATCH] build: Update after gnulib changed.
+
+* tests/Makefile.am: Initialize AM_CFLAGS and AM_CXXFLAGS.
+---
+ tests/Makefile.am | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/tests/Makefile.am b/tests/Makefile.am
+index 5cd64696..0b26e912 100644
+--- a/tests/Makefile.am
++++ b/tests/Makefile.am
+@@ -18,4 +18,7 @@
+ ## You should have received a copy of the GNU General Public License
+ ## along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ 
++AM_CFLAGS =
++AM_CXXFLAGS =
++
+ include gnulib.mk
+-- 
+2.50.1
+
