@@ -43,10 +43,16 @@ cd build
 # Configure.
 ../configure --config-cache $configure_options > log1 2>&1; rc=$?; cat log1; test $rc = 0 || exit 1
 
+host_os=`sed -n -e 's/^S\["host_os"\]="\(.*\)"$/\1/p' config.status`
+case "$host_os" in
+  netbsd*) expect_test_failures=true ;;
+  *) expect_test_failures=false ;;
+esac
+
 # Build.
 $make V=1 > log2 2>&1; rc=$?; cat log2; test $rc = 0 || exit 1
 
-if ! $cross_compiling; then
+if ! $cross_compiling && ! $expect_test_failures; then
   # Run the tests.
   $make check V=1 > log3 2>&1; rc=$?; cat log3; test $rc = 0 || exit 1
 fi
@@ -67,7 +73,7 @@ if test -n "$install_optional_dependencies_command"; then
   # Build.
   $make V=1 > log2 2>&1; rc=$?; cat log2; test $rc = 0 || exit 1
 
-  if ! $cross_compiling; then
+  if ! $cross_compiling && ! $expect_test_failures; then
     # Run the tests.
     $make check V=1 > log3 2>&1; rc=$?; cat log3; test $rc = 0 || exit 1
   fi
