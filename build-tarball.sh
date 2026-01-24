@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Copyright (C) 2024-2025 Free Software Foundation, Inc.
+# Copyright (C) 2024-2026 Free Software Foundation, Inc.
 #
 # This file is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published
@@ -32,7 +32,6 @@ git clone --depth 1 https://git.savannah.gnu.org/git/gnulib.git
 # Apply patches.
 (cd "$package" && patch -p1 < ../patches/0001-maint-Avoid-a-gcc-13-warning-that-makes-enable-gcc-w.patch)
 (cd "$package" && patch -p1 < ../patches/ubsan.diff)
-(cd "$package" && patch -p1 < ../patches/0001-build-Update-after-gnulib-changed.patch)
 
 export GNULIB_SRCDIR=`pwd`/gnulib
 cd "$package"
