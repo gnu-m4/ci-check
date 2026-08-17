@@ -2,14 +2,12 @@ diff --git a/bootstrap.conf b/bootstrap.conf
 index 557b82d4..024bcabf 100644
 --- a/bootstrap.conf
 +++ b/bootstrap.conf
-@@ -49,6 +49,10 @@ gnulib_tool_options=$gnulib_tool_options'
+@@ -49,6 +49,8 @@ gnulib_tool_options=$gnulib_tool_options'
          --avoid=getopt-posix-tests
          --avoid=lock-tests
          --avoid=tls-tests
 +        --avoid=array-oset-tests
 +        --avoid=avltree-oset-tests
-+        --avoid=memchr-tests
-+        --avoid=memset_explicit-tests
  '
  gnulib_mk=gnulib.mk
  gnulib_name=libm4
